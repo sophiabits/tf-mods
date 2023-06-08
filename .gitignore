@@ -1,0 +1,7 @@
+.terraform
+.vercel
+
+# Local sandbox files
+*.tfstate*
+.terraform.lock.hcl
+/main.tf
