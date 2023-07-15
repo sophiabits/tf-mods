@@ -26,3 +26,12 @@ resource "cloudflare_record" "this" {
   value   = "76.76.21.21"
 }
 
+resource "cloudflare_record" "verification" {
+  for_each = var.verification
+  zone_id  = cloudflare_zone.this.id
+
+  name  = "_vercel"
+  type  = "TXT"
+  value = "vc-domain-verify=${each.key == "www" ? "www." : ""}${var.name},${each.value}"
+}
+
